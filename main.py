@@ -1,5 +1,6 @@
 import random
-#from abc import ABC, abstractmethod
+#import abc
+from abc import ABC, abstractmethod
 
 #context class?
 class Assignment: 
@@ -10,6 +11,7 @@ class Assignment:
   _seniorProject=10
   _completedPercentage=0
 
+  
   def work_on_cs240(self):
     self._cs240=self._cs240-1
     self._completedPercentage=100-((100*self._cs240)/6)
@@ -94,8 +96,17 @@ class Student():
   def work_on_assignment():
     pass
 
+
+
+class Strategy(ABC):
+  @abstractmethod
+  def work_on_assignment(self):
+    pass
+
+
+
 #concretestrategy class??
-class OptismisticStrategy(Student):
+class OptismisticStrategy(Strategy):
   
   def work_on_assignment(self):
     
@@ -117,14 +128,10 @@ class OptismisticStrategy(Student):
 
     obj.showRemainingHours()
  
-class LessSleepStategy(Student):
+class LessSleepStategy(Strategy):
 
   def work_on_assignment():
     a=10
-
-
-
-
 
 
 
@@ -170,5 +177,4 @@ if __name__ == '__main__':
     print(obj3.schedule)
     obj3.remove_activity("Monday","iceCream")
     print(obj3.schedule)
-
 
